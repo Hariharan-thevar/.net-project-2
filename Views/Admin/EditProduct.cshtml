@@ -1,0 +1,15 @@
+@model CycleStoreStarter.Models.Product
+@{
+    ViewData["Title"]="Edit product";
+}
+<h2>Edit Product</h2>
+<form method="post" action="/Admin/EditProduct">
+  <input type="hidden" name="Id" value="@Model.Id" />
+  <div class="mb-3"><label>Name</label><input name="Name" value="@Model.Name" class="form-control" required /></div>
+  <div class="mb-3"><label>Slug</label><input name="Slug" value="@Model.Slug" class="form-control" /></div>
+  <div class="mb-3"><label>Description</label><textarea name="Description" class="form-control">@Model.Description</textarea></div>
+  <div class="mb-3"><label>Price</label><input name="Price" type="number" step="0.01" value="@Model.Price" class="form-control" /></div>
+  <div class="mb-3"><label>Stock</label><input name="Stock" type="number" value="@Model.Stock" class="form-control" /></div>
+  <div class="mb-3"><label>ImageFiles</label><input name="ImageFiles" value="@Model.ImageFiles" class="form-control" /></div>
+  <button class="btn btn-primary">Save</button>
+</form>

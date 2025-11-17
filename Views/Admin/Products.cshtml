@@ -1,0 +1,23 @@
+@model IEnumerable<CycleStoreStarter.Models.Product>
+@{
+    ViewData["Title"]="Admin - Products";
+}
+<h2>Products</h2>
+<p><a class="btn btn-primary" href="/Admin/CreateProduct">Create New</a></p>
+<table class="table">
+<thead><tr><th>Id</th><th>Name</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
+<tbody>
+@foreach(var p in Model){
+  <tr>
+    <td>@p.Id</td><td>@p.Name</td><td>₹@p.Price</td><td>@p.Stock</td>
+    <td>
+      <a class="btn btn-sm btn-secondary" href="/Admin/EditProduct?id=@p.Id">Edit</a>
+      <form method="post" action="/Admin/DeleteProduct" style="display:inline">
+        <input type="hidden" name="id" value="@p.Id" />
+        <button class="btn btn-sm btn-danger">Delete</button>
+      </form>
+    </td>
+  </tr>
+}
+</tbody>
+</table>

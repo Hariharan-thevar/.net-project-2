@@ -1,0 +1,15 @@
+@model List<CycleStoreStarter.Models.CartItem>
+@{
+    ViewData["Title"] = "Checkout";
+}
+<h2>Checkout</h2>
+@if(!Model.Any()){
+  <p>Your cart is empty.</p>
+} else {
+  <form method="post" action="/Checkout/PlaceOrder">
+    <div class="mb-3"><label>Name</label><input name="name" class="form-control" required /></div>
+    <div class="mb-3"><label>Email</label><input name="email" type="email" class="form-control" required /></div>
+    <p><strong>Total: ₹@Model.Sum(i => i.UnitPrice * i.Quantity)</strong></p>
+    <button class="btn btn-primary">Place order (Payment stub)</button>
+  </form>
+}

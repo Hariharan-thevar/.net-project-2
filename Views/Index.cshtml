@@ -1,0 +1,54 @@
+@page
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero">
+  <div class="container hero-inner">
+    <h1>Premium Bicycles · Handcrafted</h1>
+    <p class="lead">Lightweight frames, real components, and rides that make your day.</p>
+    <a class="btn hero-btn" href="#models">Explore Models</a>
+  </div>
+</section>
+
+<section id="models" class="models container">
+  <h2 class="section-title">Chef's Selections</h2>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-media">
+        <img src="@(Url.Content("~/images/bike1.jpg"))" alt="Crimson Roadster" />
+      </div>
+      <div class="card-body">
+        <h3>Crimson Roadster</h3>
+        <p class="desc">Lightweight carbon frame, race-ready geometry.</p>
+        <div class="price">₹24,999</div>
+        <a class="btn small" href="/products/1">View Details</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-media">
+        <img src="@(Url.Content("~/images/bike2.jpg"))" alt="Trail Conqueror" />
+      </div>
+      <div class="card-body">
+        <h3>Trail Conqueror</h3>
+        <p class="desc">Suspension tuned for rugged trails and comfort.</p>
+        <div class="price">₹29,499</div>
+        <a class="btn small" href="/products/2">View Details</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-media">
+        <img src="@(Url.Content("~/images/bike3.jpg"))" alt="Urban Glide" />
+      </div>
+      <div class="card-body">
+        <h3>Urban Glide</h3>
+        <p class="desc">Comfort geometry, built-in rack and fenders.</p>
+        <div class="price">₹14,999</div>
+        <a class="btn small" href="/products/3">View Details</a>
+      </div>
+    </article>
+  </div>
+</section>

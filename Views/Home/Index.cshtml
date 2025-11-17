@@ -1,0 +1,20 @@
+@model IEnumerable<CycleStoreStarter.Models.Product>
+@{
+    ViewData["Title"] = "Home";
+}
+<h2>Featured Cycles</h2>
+<div class="row">
+@foreach(var p in Model){
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <img src="/images/@(p.ImageFiles?.Split(',')[0])" class="card-img-top" style="height:180px;object-fit:cover" />
+      <div class="card-body">
+        <h5 class="card-title">@p.Name</h5>
+        <p class="card-text">@p.Description</p>
+        <p class="card-text"><strong>₹@p.Price</strong></p>
+        <a class="btn btn-primary" href="/Products/Details?slug=@p.Slug">View</a>
+      </div>
+    </div>
+  </div>
+}
+</div>

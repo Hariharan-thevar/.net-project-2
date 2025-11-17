@@ -1,0 +1,30 @@
+@model List<CycleStoreStarter.Models.CartItem>
+@{
+    ViewData["Title"] = "Cart";
+}
+<h2>Your Cart</h2>
+@if(!Model.Any()){
+  <p>Your cart is empty. <a href="/Products">Shop now</a></p>
+} else {
+  <table class="table">
+    <thead><tr><th>Product</th><th>Unit</th><th>Qty</th><th>Subtotal</th><th></th></tr></thead>
+    <tbody>
+    @foreach(var it in Model){
+      <tr>
+        <td>@it.ProductName</td>
+        <td>₹@it.UnitPrice</td>
+        <td>@it.Quantity</td>
+        <td>₹@(it.UnitPrice * it.Quantity)</td>
+        <td>
+          <form method="post" action="/Cart/Remove">
+            <input type="hidden" name="productId" value="@it.ProductId" />
+            <button class="btn btn-sm btn-danger">Remove</button>
+          </form>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+  <p><strong>Total: ₹@Model.Sum(i => i.UnitPrice * i.Quantity)</strong></p>
+  <a class="btn btn-success" href="/Checkout">Checkout</a>
+}

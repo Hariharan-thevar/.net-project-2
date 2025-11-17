@@ -1,27 +1,59 @@
-@model IEnumerable<CycleStoreStarter.Models.Product>
 @{
-    ViewData["Title"] = "Catalog";
+    Layout = "_Layout";
+    var req = Context.Request;
 }
-<h2>Catalog</h2>
-<form method="get" class="mb-3">
-  <input name="q" class="form-control" placeholder="Search..." value="@Request.Query["q"]" />
-</form>
-<div class="row">
-@foreach(var p in Model){
-  <div class="col-md-4">
-    <div class="card mb-3">
-      <img src="/images/@(p.ImageFiles?.Split(',')[0])" class="card-img-top" style="height:180px;object-fit:cover" />
-      <div class="card-body">
-        <h5>@p.Name</h5>
-        <p>@p.Description</p>
-        <p><strong>₹@p.Price</strong></p>
-        <form method="post" action="/Cart/Add">
-          <input type="hidden" name="productId" value="@p.Id" />
-          <button class="btn btn-sm btn-success">Add to cart</button>
-        </form>
-        <a class="btn btn-sm btn-secondary" href="/Products/Details?slug=@p.Slug">Details</a>
-      </div>
+
+<h1 class="mb-4">Bicycle Products</h1>
+
+<div class="container mt-4">
+
+    <div class="row mb-3">
+        <div class="col">
+            <!-- Example: Use fixed url or req.Path/query if needed -->
+            <p class="text-muted">
+                You are viewing: <strong>@req.Path</strong>
+            </p>
+        </div>
     </div>
-  </div>
-}
+
+    <div class="row">
+
+        <!-- Bike 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <img src="~/images/bike1.jpg" class="card-img-top" alt="Bike 1" />
+                <div class="card-body">
+                    <h5 class="card-title">Crimson Roadster</h5>
+                    <p class="card-text">Speed focused carbon-frame bicycle.</p>
+                    <p class="fw-bold">₹24,999</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bike 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <img src="~/images/bike2.jpg" class="card-img-top" alt="Bike 2" />
+                <div class="card-body">
+                    <h5 class="card-title">Trail Conqueror</h5>
+                    <p class="card-text">Mountain bike with premium suspension.</p>
+                    <p class="fw-bold">₹29,499</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bike 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow">
+                <img src="~/images/bike3.jpg" class="card-img-top" alt="Bike 3" />
+                <div class="card-body">
+                    <h5 class="card-title">Urban Glide</h5>
+                    <p class="card-text">City commuter with comfort geometry.</p>
+                    <p class="fw-bold">₹14,999</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>

@@ -1,0 +1,27 @@
+@model IEnumerable<CycleStoreStarter.Models.Product>
+@{
+    ViewData["Title"] = "Catalog";
+}
+<h2>Catalog</h2>
+<form method="get" class="mb-3">
+  <input name="q" class="form-control" placeholder="Search..." value="@Request.Query["q"]" />
+</form>
+<div class="row">
+@foreach(var p in Model){
+  <div class="col-md-4">
+    <div class="card mb-3">
+      <img src="/images/@(p.ImageFiles?.Split(',')[0])" class="card-img-top" style="height:180px;object-fit:cover" />
+      <div class="card-body">
+        <h5>@p.Name</h5>
+        <p>@p.Description</p>
+        <p><strong>₹@p.Price</strong></p>
+        <form method="post" action="/Cart/Add">
+          <input type="hidden" name="productId" value="@p.Id" />
+          <button class="btn btn-sm btn-success">Add to cart</button>
+        </form>
+        <a class="btn btn-sm btn-secondary" href="/Products/Details?slug=@p.Slug">Details</a>
+      </div>
+    </div>
+  </div>
+}
+</div>
